@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Company Register</h2>
+<form method="post">
+    {% csrf_token %}
+
+    <label>Username</label> <input type="text" name="username"> <br>
+
+    <label>Company Name</label> <input type="text" name="company_name"> <br>
+
+    <label>Email</label> <input type="email" name="email"> <br>
+
+    <label>Password</label> <input type="password" name="password"> <br>
+
+    <label>Confirm Password</label> <input type="password" name="confirm_password"> <br>
+
+    <label>Register</label> <input type="submit">
+
+</form>
+
+{% endblock %}

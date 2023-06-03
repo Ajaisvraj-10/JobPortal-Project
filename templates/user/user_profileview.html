@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    {% for profileview in profileview %}
+    
+    <h1>Profiles</h1>
+    
+    
+    <tr>
+        <td>{{ forloop.counter }}</td>
+        <td><h2><a  href="{% url 'user_profile_details' profileview.id %}">{{profileview.name}}</a></h2></td>
+    </tr>
+    
+    
+    {% endfor %}
+    <br><br><br><br><br><br><br><br>
+    </div>
+
+{% endblock %}

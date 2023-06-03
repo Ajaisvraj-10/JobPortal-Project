@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<h1>User Profile</h1>
+
+{% if profileview %}
+    <h2>{{ user_profile.name }}</h2>
+    <p>Location: {{ profileview.location }}</p>
+    <p>Contact Email: {{ profileview.cont_email }}</p>
+    <p>Contact Phone: {{ profileview.cont_phone }}</p>
+    <p>Gender: {{ profileview.gender }}</p>
+    {% if profileview.profile_image %}
+        <img src="{{ profileview.profile_image.url }}" alt="Profile Image">
+    {% else %}
+        <p>No profile image available</p>
+    {% endif %}
+{% else %}
+    <p>User profile not found.</p>
+{% endif %}
+
+
+{% endblock %}

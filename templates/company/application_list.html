@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- application_list.html -->
+
+<h1>Application List</h1>
+
+{% if application %}
+  <table>
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Job</th>
+        <th>Resume</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for application in application %}
+        <tr>
+          <td>{{ application.username }}</td>
+          <td>{{ application.job }}</td>
+          <td>{{ application.resume }}</td>
+          <td>{{ application.status }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% else %}
+  <p>No applications found.</p>
+{% endif %}
+
+{% endblock %}

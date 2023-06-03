@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Job</title>
+</head>
+<body>
+    <h1>Add Job</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="company_name">Company Name:</label>
+        <input type="text" id="company_name" name="company_name" required><br>
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="location" required><br>
+        <label for="job_title">Job Title:</label>
+        <input type="text" id="job_title" name="job_title" required><br>
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" required></textarea><br>
+        <label for="job_type">Job Type:</label>
+        <input type="text" id="job_type" name="job_type" required><br>
+        <label for="salary">Salary:</label>
+        <input type="text" id="salary" name="salary" required><br>
+        <label for="skills_required">Skills Required:</label>
+        <input type="text" id="skills_required" name="skills_required" required><br>
+        <label for="education_required">Education Required:</label>
+        <input type="text" id="education_required" name="education_required" required><br>
+        <label for="experience_required">Experience Required:</label>
+        <input type="text" id="experience_required" name="experience_required" required><br>
+        <input type="submit" value="Add Job">
+    </form>
+</body>
+</html>
+
+
+{% endblock %}

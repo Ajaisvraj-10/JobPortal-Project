@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="name" required><br>
+    <label for="location">Location:</label>
+    <input type="text" name="location" id="location" required><br>
+    <label for="cont_email">Contact Email:</label>
+    <input type="email" name="cont_email" id="cont_email" required><br>
+    <label for="cont_phone">Contact Phone:</label>
+    <input type="text" name="cont_phone" id="cont_phone" required><br>
+    <label for="profile_image">Profile Image:</label>
+    <input type="file" name="profile_image" id="profile_image">
+    <label for="gender">Gender:</label>
+    <select id="status" name="gender" required>
+        <option value="" selected disabled>Select Gender</option>
+        {% for choice in choices %}
+        <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+        {% endfor %}
+      </select>
+    <input type="submit" value="Save">
+  </form>
+  
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <label>Company Name</label><h1>{{joblist.company_name}}</h1>
+   
+   <label>Location</label><h5>{{joblist.location}}</h5>
+   <label>Job Title</label><h5>{{joblist.job_tittle}}</h5>
+   <label>Description</label><h5>{{joblist.description}}</h5>
+   <label>Job Type</label><h5>{{joblist.job_type}}</h5>
+   <label>Salary</label><h5>{{joblist.salary}}</h5>
+   <label>Skills Required</label><h5>{{joblist.skills_required}}</h5>
+   <label>Education Required</label><h5>{{joblist.education_required}}</h5>
+   <label>Experience Required</label><h5>{{joblist.experience_required}}</h5>
+   
+   </div>
+   
+
+{% endblock %}

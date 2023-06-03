@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<!-- application_submission.html -->
+Submit Your Application
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required><br>
+    
+    <label for="job">Job:</label>
+    <input type="text" id="job" name="job" required><br>
+    
+    <label for="resume">Resume:</label>
+    <input type="file" id="resume" name="resume" required><br>
+    
+    <label for="status">Status:</label>
+    <select id="status" name="status" required>
+      <option value="" selected disabled>Select Status</option>
+      {% for choice in choices %}
+      <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+      {% endfor %}
+    </select><br>
+    
+    <button type="submit">Submit</button>
+  </form>  
+  
+
+
+{% endblock %}

@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+
+<!doctype html>
+<html lang="en">
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="fonts/icomoon/style.css">
+<link rel="stylesheet" href="css/owl.carousel.min.css">
+
+<link rel="stylesheet" href="css/bootstrap.min.css">
+
+<link rel="stylesheet" href="css/style.css">
+<title>Login #7</title>
+<script nonce="6414d91b-7e71-4884-9ebc-d422e8c9a1af">(function(w,d){!function(bv,bw,bx,by){bv[bx]=bv[bx]||{};bv[bx].executed=[];bv.zaraz={deferred:[],listeners:[]};bv.zaraz.q=[];bv.zaraz._f=function(bz){return function(){var bA=Array.prototype.slice.call(arguments);bv.zaraz.q.push({m:bz,a:bA})}};for(const bB of["track","set","debug"])bv.zaraz[bB]=bv.zaraz._f(bB);bv.zaraz.init=()=>{var bC=bw.getElementsByTagName(by)[0],bD=bw.createElement(by),bE=bw.getElementsByTagName("title")[0];bE&&(bv[bx].t=bw.getElementsByTagName("title")[0].text);bv[bx].x=Math.random();bv[bx].w=bv.screen.width;bv[bx].h=bv.screen.height;bv[bx].j=bv.innerHeight;bv[bx].e=bv.innerWidth;bv[bx].l=bv.location.href;bv[bx].r=bw.referrer;bv[bx].k=bv.screen.colorDepth;bv[bx].n=bw.characterSet;bv[bx].o=(new Date).getTimezoneOffset();if(bv.dataLayer)for(const bI of Object.entries(Object.entries(dataLayer).reduce(((bJ,bK)=>({...bJ[1],...bK[1]})))))zaraz.set(bI[0],bI[1],{scope:"page"});bv[bx].q=[];for(;bv.zaraz.q.length;){const bL=bv.zaraz.q.shift();bv[bx].q.push(bL)}bD.defer=!0;for(const bM of[localStorage,sessionStorage])Object.keys(bM||{}).filter((bO=>bO.startsWith("_zaraz_"))).forEach((bN=>{try{bv[bx]["z_"+bN.slice(7)]=JSON.parse(bM.getItem(bN))}catch{bv[bx]["z_"+bN.slice(7)]=bM.getItem(bN)}}));bD.referrerPolicy="origin";bD.src="/cdn-cgi/zaraz/s.js?z="+btoa(encodeURIComponent(JSON.stringify(bv[bx])));bC.parentNode.insertBefore(bD,bC)};["complete","interactive"].includes(bw.readyState)?zaraz.init():bv.addEventListener("DOMContentLoaded",zaraz.init)}(w,d,"zarazData","script");})(window,document);</script></head>
+<body>
+<div class="content">
+<div class="container">
+<div class="row">
+<div class="col-md-6">
+<img src="{% static 'img/login_img.svg' %}" alt="Image" class="img-fluid">
+</div>
+<div class="col-md-6 contents">
+<div class="row justify-content-center">
+<div class="col-md-8">
+<div class="mb-4">
+<h3>Login</h3>
+<p class="mb-4">Welcome Back.</p>
+</div>
+<form action="#" method="post">
+    {% csrf_token %}
+<div class="form-group first">
+<label for="username">Username</label>
+<input type="text" class="form-control" id="username" name="username">
+</div>
+<div class="form-group last mb-4">
+<label for="password">Password</label>
+<input type="password" class="form-control" id="password" name="password">
+</div>
+<div class="d-flex mb-5 align-items-center">
+
+<div class="control__indicator"></div>
+</label>
+<span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span>
+</div>
+<input type="submit" value="Log In" class="btn btn-block btn-primary">
+<span class="d-block text-left my-4 text-muted"></span>
+<div class="social-login">
+{%for msg in messages%}
+
+<span style="color: red">{{msg}}</span>
+
+{%endfor%} 
+
+<a href="#" class="facebook">
+<span class="icon-facebook mr-3"></span>
+</a>
+<a href="#" class="twitter">
+<span class="icon-twitter mr-3"></span>
+</a>
+<a href="#" class="google">
+<span class="icon-google mr-3"></span>
+</a>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/main.js"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vb26e4fa9e5134444860be286fd8771851679335129114" integrity="sha512-M3hN/6cva/SjwrOtyXeUa5IuCT0sedyfT+jK/OV+s+D0RnzrTfwjwJHhd+wYfMm9HJSrZ1IKksOdddLuN6KOzw==" data-cf-beacon='{"rayId":"7b0a27a4382c8531","token":"cd0b4b3a733644fc843ef0b185f98241","version":"2023.3.0","si":100}' crossorigin="anonymous"></script>
+</body>
+</html>
+
+
+
+{% endblock %}

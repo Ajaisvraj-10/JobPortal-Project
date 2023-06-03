@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Job List</title>
+</head>
+<body>
+    <h1>Job List</h1>
+    {% if joblist %}
+        <ul>
+            {% for joblist in joblist %}
+               <a href="{% url 'company_jobdetails' joblist.id %}"><li>{{ joblist.job_tittle }} - {{ joblist.company_name }}</li></a> 
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No jobs available.</p>
+    {% endif %}
+</body>
+</html>
+
+
+
+{% endblock %}
