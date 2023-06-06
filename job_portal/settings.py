@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'company',
     'user',
+    'account',
    
    
 ]
@@ -81,6 +82,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+        
     }
 }
 
@@ -133,4 +135,4 @@ MEDIA_ROOT= 'media'
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-AUTH_USER_MODEL = 'user.CustomUser'
+AUTH_USER_MODEL = 'account.CustomUser'

@@ -2,11 +2,14 @@ from django.shortcuts import render ,redirect
 from .models import *
 from django.contrib.auth import authenticate, login,logout
 from django.contrib.auth.decorators import login_required
+from account .models import *
 
 # Create your views here.
 @login_required(login_url="company_login")
 def company_index(request):
     return render(request,'company/company_index.html')
+
+
 
 def company_registration(request):
     if request.method == 'POST':
@@ -16,9 +19,10 @@ def company_registration(request):
         password1 = request.POST.get('password')
         password2 = request.POST.get('confirm_password')
         
-        if not CustomUser.objects.filter(username=username).exists():
+        user =  Company.objects.filter(username=username).first()
+        if not user :
             if password1 == password2:
-                CustomUser.objects.create_user(
+                Company.objects.create_user(
                     username=username,
                     first_name=company_name,
                     email=email,
@@ -26,17 +30,6 @@ def company_registration(request):
                 )
         return redirect('company_profile')
     return render(request, 'company/company_registration.html')
-
-
-def company_login(request):
-    if request.method == "POST":
-        company_name = request.POST.get('company_name')
-        password = request.POST.get('password')
-        user = authenticate(request,company_name=company_name,password=password)
-        if user:
-            login(request,user)
-            return redirect('company_index')
-    return render(request,'company/company_login.html')
 
 
 def logout_company(request):
