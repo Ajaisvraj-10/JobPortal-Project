@@ -3,6 +3,7 @@ from .views import *
 
 
 
+
 urlpatterns = [
     
 ]

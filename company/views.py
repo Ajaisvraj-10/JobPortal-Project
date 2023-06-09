@@ -2,10 +2,12 @@ from django.shortcuts import render ,redirect
 from .models import *
 from django.contrib.auth import authenticate, login,logout
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from account .models import *
+from.decorators import company_login_required
 
 # Create your views here.
-@login_required(login_url="company_login")
+@company_login_required
 def company_index(request):
     return render(request,'company/company_index.html')
 
@@ -28,15 +30,20 @@ def company_registration(request):
                     email=email,
                     password=password2
                 )
-        return redirect('company_profile')
+                messages.success(request, "Account create Successfuly")
+                return redirect('user_login')
+            else:
+                messages.error(request, "Password does not match")        
     return render(request, 'company/company_registration.html')
 
 
 def logout_company(request):
     logout(request)
-    return redirect("company_login")
+    return redirect("user_login")
 
 
+
+@company_login_required
 def company_profile(request):
     if request.method == 'POST':
         company_name = request.POST.get('company_name')
@@ -56,6 +63,8 @@ def company_profile(request):
     return render(request,'company/company_profile.html')
 
 
+
+@company_login_required
 def company_list(request):
     user = request.user
     profiles = CompanyProfile.objects.filter(user=user)
@@ -63,12 +72,16 @@ def company_list(request):
     return render(request,'company/company_list.html',context)
 
 
+
+@company_login_required
 def company_details(request,id):
     details = CompanyProfile.objects.get(id=id)
     context = {'profiles':details}
     return render(request,'company/company_details.html',context)
 
 
+
+@company_login_required
 def company_addjob(request):
     if request.method == 'POST':
         company_name = request.POST.get('company_name')
@@ -97,6 +110,8 @@ def company_addjob(request):
     return render(request,'company/company_addjob.html')
 
 
+
+@company_login_required
 def company_joblist(request):
     user = request.user
     joblist = AddJob.objects.filter(user=user)
@@ -104,12 +119,16 @@ def company_joblist(request):
     return render(request,'company/company_joblist.html',context)
 
 
+
+@company_login_required
 def company_jobdetails(request,id):
     jobdetails = AddJob.objects.get(id=id)
     context = {'joblist':jobdetails}
     return render(request,'company/company_jobdetails.html',context)
 
 
+
+@company_login_required
 def appliction_submision(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -128,7 +147,11 @@ def appliction_submision(request):
     return render(request,'company/application_submission.html',{'choices':AppllicationSubmition.selection_choices})
 
 
+
+@company_login_required
 def appliction_list(request):
     application = AppllicationSubmition.objects.all()
     context = {'application':application}
     return render(request,'company/application_list.html',context)
+
+

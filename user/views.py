@@ -4,9 +4,10 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login,logout
 from account .models import *
 from .models import *
+from.decorators import user_login_required
 
 # Create your views here.
-
+@user_login_required
 def user_index(request):
     return render(request,"user/user_index.html")
 
@@ -28,11 +29,14 @@ def user_login(request):
     return render(request,"user/user_login.html")
 
 
+
 def logout_user(request):
     logout(request)
     return redirect('user_login')
 
 
+
+@user_login_required
 def user_registration(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -40,7 +44,6 @@ def user_registration(request):
         password1 = request.POST.get('password')
         password2 = request.POST.get('confirm_password')
         email = request.POST.get('email')
-        
         user = User.objects.filter(username=username)
         if not user:
             if password1 == password2:
@@ -48,18 +51,19 @@ def user_registration(request):
                     username=username,
                     first_name=name,
                     email=email,
-                    password=password2,
-                    is_active = True
+                    password=password2,      
                 )
                 messages.success(request, "Account created successfully")
-                return redirect('adduser_profile')
+                return redirect('user_login')
             else:
                 messages.error(request, "Password does not match")
         else:
             messages.error(request, "Username already exists")
     return render(request, 'user/user_registration.html')
     
-
+    
+    
+@user_login_required
 def adduser_profile(request):
     if request.method == 'POST':
         name = request.POST.get('name')
@@ -82,7 +86,7 @@ def adduser_profile(request):
     return render(request,'user/adduser_profile.html',{'choices':UserProfile.GENDER_CHOICES})
 
 
- 
+@user_login_required
 def user_profileview(request):
     user = request.user
     profileview = UserProfile.objects.filter(user=user)
@@ -90,21 +94,21 @@ def user_profileview(request):
     return render(request,'user/user_profileview.html',context)
 
 
+@user_login_required
 def user_profile_details(request,id):
     profile_details = UserProfile.objects.get(id=id)
     context = {'profileview':profile_details}
     return render(request,'user/user_profile_details.html',context)
 
 
+@user_login_required
 def add_education(request):
     if request.method == 'POST':
         name_of_college = request.POST.get('name_of_college')
         passout_year = request.POST.get('passout_year')
         subject = request.POST.get('subject')
 
-        
-
-        Education.objects.create( 
+        AddEducation.objects.create( 
             user_profile = request.user,
             name_of_college=name_of_college,
             passout_year=passout_year,
@@ -115,3 +119,46 @@ def add_education(request):
     return render(request,'add_education.html')
 
 
+@user_login_required
+def add_skill(request):
+    if request.method == 'POST':
+        skill_name = request.POST.get('skill_name')
+        description = request.POST.get('description')
+        AddSkills.objects.create(
+            user_profile = request.user,
+            skill_name = skill_name,
+            description = description
+        )
+        return redirect('profile')
+    return render(request,'add_skill.html')
+
+@user_login_required
+def add_experience(request):
+    if request.method == 'POST':
+        company_name = request.POST.get('company_name')
+        position = request.POST.get('position')
+        start_date = request.POST.get('start_date')
+        end_date = request.POST.get('end_date')
+        AddExperience.objects.create(
+            user_profile = request.user,
+            company_name = company_name,
+            position = position,
+            start_date = start_date,
+            end_date = end_date
+        )
+        return redirect('profile')
+    return render(request,'add_experience.html')
+
+
+def add_projects(request):
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        description = request.POST.get('description')
+        AddProject.objects.create(
+            user_profile = request.user,
+            title = title,
+            description = description
+        )
+        return redirect('profile')
+        
+    return render(request,'add_project')

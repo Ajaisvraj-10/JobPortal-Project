@@ -5,9 +5,9 @@ from .models import *
 
 admin.site.register(CustomUser)
 admin.site.register(UserProfile)
-admin.site.register(Education)
-admin.site.register(Skills)
-admin.site.register(Experience)
-admin.site.register(Project)
+admin.site.register(AddEducation)
+admin.site.register(AddSkills)
+admin.site.register(AddExperience)
+admin.site.register(AddProject)
 
 

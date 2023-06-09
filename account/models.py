@@ -11,8 +11,6 @@ class CustomUser(AbstractUser):
         COMPANY = "COMPANY", "Company"
 
     base_role = Role.ADMIN
-    is_active = models.BooleanField(default=False)
-    can_login = models.BooleanField(default=True)
     role = models.CharField(max_length=50, choices=Role.choices)
     
     def save(self, *args, **kwargs):
@@ -28,7 +26,7 @@ class UserManager(BaseUserManager):
         return results.filter(role=CustomUser.Role.USER)
 
 
-class User(CustomUser):
+class  User(CustomUser):
     base_role = CustomUser.Role.USER
     user = UserManager()
 

@@ -2,9 +2,6 @@ from django.db import models
 from account.models import CustomUser
 # Create your models here.
 
-
-    
-    
 class UserProfile(models.Model):
     
     GENDER_CHOICES = (
@@ -24,7 +21,7 @@ class UserProfile(models.Model):
         return self.name
     
     
-class Education(models.Model):
+class AddEducation(models.Model):
     user_profile = models.ForeignKey(UserProfile,on_delete=models.CASCADE)
     name_of_college = models.CharField(max_length=100,null= True)
     passout_year = models.CharField(max_length=100,null=True)
@@ -32,14 +29,14 @@ class Education(models.Model):
     
     
     
-class Skills(models.Model):
+class AddSkills(models.Model):
     user_profile = models.ForeignKey(UserProfile,on_delete=models.CASCADE)
-    name = models.CharField(max_length=100)
+    skill_name = models.CharField(max_length=100)
     description = models.TextField(blank=True)
     
     
     
-class Experience(models.Model):
+class AddExperience(models.Model):
     user_profile = models.ForeignKey(UserProfile,on_delete=models.CASCADE)
     company_name = models.CharField(max_length=100,null=True)
     position = models.CharField(max_length=100,null=True)
@@ -51,8 +48,8 @@ class Experience(models.Model):
     
     
     
-class Project(models.Model):
-    user = models.ForeignKey(UserProfile,on_delete=models.CASCADE)
+class AddProject(models.Model):
+    user_profile = models.ForeignKey(UserProfile,on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
     description = models.TextField()
     
