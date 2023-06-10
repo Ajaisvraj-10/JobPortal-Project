@@ -7,9 +7,24 @@ from account .models import *
 from.decorators import company_login_required
 
 # Create your views here.
-@company_login_required
+
 def company_index(request):
     return render(request,'company/company_index.html')
+
+def company_login(request):
+    if request.user.is_authenticated:
+        return redirect("company_index")
+    user = request.user
+    if request.method == "POST":
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+        user = authenticate(username=username,password=password)
+        if user:
+            login(request,user)
+            messages.success(request,"Login Success")
+            return redirect("company_index")
+        messages.error(request, "Invalid username or password")
+    return render(request,"company/company_login.html")
 
 
 
