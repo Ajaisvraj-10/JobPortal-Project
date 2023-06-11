@@ -1,4 +1,5 @@
 from django.shortcuts import render ,redirect
+from django.http import HttpResponse
 from .models import *
 from django.contrib.auth import authenticate, login,logout
 from django.contrib.auth.decorators import login_required
@@ -59,7 +60,7 @@ def logout_company(request):
 
 
 @company_login_required
-def company_profile(request):
+def add_company_profile(request):
     if request.method == 'POST':
         company_name = request.POST.get('company_name')
         location = request.POST.get('location')
@@ -75,20 +76,21 @@ def company_profile(request):
             logo=logo
         )
         return redirect('company_list')
-    return render(request,'company/company_profile.html')
+    return render(request,'company/add_company_profile.html')
 
 
 
 @company_login_required
-def company_list(request):
+def company_profile(request):
     user = request.user
     profiles = CompanyProfile.objects.filter(user=user)
     context = {"profiles": profiles}
-    return render(request,'company/company_list.html',context)
+    return render(request,'company/company_profile.html',context)
 
 
 
 @company_login_required
+
 def company_details(request,id):
     details = CompanyProfile.objects.get(id=id)
     context = {'profiles':details}
@@ -170,3 +172,26 @@ def appliction_list(request):
     return render(request,'company/application_list.html',context)
 
 
+
+@company_login_required
+def company_profile_edit(request, id):
+    profile_edit = CompanyProfile.objects.get(id=id)
+    context = {"profile_edit": profile_edit}
+    
+    if request.method == "POST":
+        if profile_edit.author != request.user:
+            return HttpResponse("You are not authorized to edit this page")
+        
+        company_name = request.POST.get("company_name")
+        location = request.POST.get("location")
+        contact_email = request.POST.get("contact_email")
+        contact_phone = request.POST.get("contact_phone")
+        
+        profile_edit.company_name = company_name
+        profile_edit.location = location
+        profile_edit.contact_email = contact_email
+        profile_edit.contact_phone = contact_phone
+        profile_edit.save()
+        return redirect("company_details", id)
+    
+    return render(request, "company/company_profile_edit.html", context)

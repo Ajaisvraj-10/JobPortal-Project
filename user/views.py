@@ -29,11 +29,9 @@ def user_login(request):
     return render(request,"user/user_login.html")
 
 
-
 def logout_user(request):
     logout(request)
     return redirect('user_login')
-
 
 
 

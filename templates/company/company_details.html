@@ -15,7 +15,13 @@
 
 {% endif %}
 
+{% for profile_edit in profile_edit %}
+<a style="color: black;" href="{% url 'company_profile_edit' profile_edit.id %}">Edit Profile</a>
+<br /><br />
+{% endfor %}
+
 </div>
+
 
 
 {% endblock %}
