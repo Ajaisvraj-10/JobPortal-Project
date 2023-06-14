@@ -2,7 +2,11 @@
 {% block content %}
 {% load static %}
 
-
+<style>
+    .text-primary{
+        color: #0089ff !important;
+        }
+    </style>
 <!doctype html>
 <html lang="en">
 <head>
@@ -46,9 +50,9 @@
 
 <div class="control__indicator"></div>
 </label>
-<span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span>
+<span class="ml-auto"><a style="color: #0089ff;" href="#" class="forgot-pass">Forgot Password</a></span>
 </div>
-<input type="submit" value="Log In" class="btn btn-block btn-primary">
+<input style="color: #ffffff; background-color: #0089ff;" type="submit" value="Log In" class="btn btn-block btn-primary">
 <span class="d-block text-left my-4 text-muted"></span>
 <div class="social-login">
 {%for msg in messages%}

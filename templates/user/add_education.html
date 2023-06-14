@@ -2,6 +2,21 @@
 
 {% block content %}
 
+<form method="POST">
+    {% csrf_token %}
+    
+    <label for="name_of_college">Name of College:</label>
+    <input type="text" name="name_of_college" id="name_of_college" required>
+    
+    <label for="passout_year">Passout Year:</label>
+    <input type="text" name="passout_year" id="passout_year" required>
+    
+    <label for="subject">Subject:</label>
+    <input type="text" name="subject" id="subject" required>
+    
+    <button type="submit">Add Education</button>
+  </form>
+  
 
 
 

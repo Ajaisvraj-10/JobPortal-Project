@@ -34,7 +34,7 @@ class AddSkills(models.Model):
     skill_name = models.CharField(max_length=100)
     description = models.TextField(blank=True)
     
-    
+
     
 class AddExperience(models.Model):
     user_profile = models.ForeignKey(UserProfile,on_delete=models.CASCADE)

@@ -101,21 +101,20 @@ def user_profile_details(request,id):
 
 @user_login_required
 def add_education(request):
-    user_profile = request.user
     if request.method == 'POST':
         name_of_college = request.POST.get('name_of_college')
         passout_year = request.POST.get('passout_year')
         subject = request.POST.get('subject')
-
+        user_profile = UserProfile.objects.get(user=request.user)
+        
         AddEducation.objects.create( 
+            user_profile=user_profile,
             name_of_college=name_of_college,
             passout_year=passout_year,
-            subject=subject,
-            user_profile=user_profile
+            subject=subject
         )
-
-        return redirect('profile')
-    return render(request,'add_education.html')
+        return redirect('user_profile_details')
+    return render(request,'user/add_education.html')
 
 
 @user_login_required
@@ -129,8 +128,9 @@ def add_skill(request):
             description = description,
             user_profile=user_profile
         )
-        return redirect('profile')
-    return render(request,'add_skill.html')
+        return redirect('user_profile_details')
+    return render(request,'user/add_skill.html')
+
 
 @user_login_required
 def add_experience(request):
@@ -147,8 +147,8 @@ def add_experience(request):
             end_date = end_date,
             user_profile=user_profile
         )
-        return redirect('profile')
-    return render(request,'add_experience.html')
+        return redirect('user_profile_details')
+    return render(request,'user/add_experience.html')
 
 
 def add_projects(request):
@@ -161,7 +161,6 @@ def add_projects(request):
             description = description,
             user_profile=user_profile
         )
-        return redirect('profile')
-        
-    return render(request,'add_project')
+        return redirect('user_profile_details')
+    return render(request,'user/add_project')
 

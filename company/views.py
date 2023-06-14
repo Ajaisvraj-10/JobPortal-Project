@@ -36,7 +36,6 @@ def company_registration(request):
         email = request.POST.get('email')
         password1 = request.POST.get('password')
         password2 = request.POST.get('confirm_password')
-        
         user =  Company.objects.filter(username=username).first()
         if not user :
             if password1 == password2:
@@ -90,7 +89,6 @@ def company_profile(request):
 
 
 @company_login_required
-
 def company_details(request,id):
     details = CompanyProfile.objects.get(id=id)
     context = {'profiles':details}
