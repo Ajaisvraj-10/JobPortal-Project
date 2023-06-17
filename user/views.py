@@ -70,7 +70,6 @@ def adduser_profile(request):
         cont_phone = request.POST.get('cont_phone')
         profile_image = request.FILES.get('profile_image')
         gender = request.POST.get('gender')
-        
         UserProfile.objects.create(
             user=request.user,
             name=name,
@@ -95,25 +94,30 @@ def user_profileview(request):
 @user_login_required
 def user_profile_details(request,id):
     profile_details = UserProfile.objects.get(id=id)
-    context = {'profileview':profile_details}
+    add_education = AddEducation.objects.filter(user=request.user) 
+    context = {
+        'profileview':profile_details,
+        'add_education':add_education
+        
+    }
     return render(request,'user/user_profile_details.html',context)
 
 
 @user_login_required
 def add_education(request):
+    user_profile = request.user
     if request.method == 'POST':
         name_of_college = request.POST.get('name_of_college')
         passout_year = request.POST.get('passout_year')
         subject = request.POST.get('subject')
-        user_profile = UserProfile.objects.get(user=request.user)
         
         AddEducation.objects.create( 
-            user_profile=user_profile,
             name_of_college=name_of_college,
             passout_year=passout_year,
-            subject=subject
+            subject=subject,
+            user = user_profile
         )
-        return redirect('user_profile_details')
+        return redirect('user_profile_details.id')
     return render(request,'user/add_education.html')
 
 

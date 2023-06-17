@@ -68,7 +68,7 @@
                     {% if request.user.is_authenticated %}
                     <a style="margin-top: 25px; margin-right: 100px; color: #0089ff;" href="{% url 'logout_user' %}"> Logout</a>
                     {% else %}
-                    <a style="margin-top: 25px; margin-right: 55px;color: #0089ff;" href="{% url 'user_login' %}">User Login</a>
+                    <a style="margin-top: 25px; margin-right: 55px;color: #0089ff;" href="{% url 'user_login' %}">Login</a>
                     <a style="margin-top: 25px; margin-right: 30px;color: #0089ff;" href="{% url 'user_register' %}">User Register</a>
                     <a style="margin-top: 25px; margin-right: 10px;color: #0089ff;" href="{% url 'company_register' %}">Company Register</a>
                    {% endif %}

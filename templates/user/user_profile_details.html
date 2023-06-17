@@ -19,6 +19,23 @@
 {% else %}
     <p>User profile not found.</p>
 {% endif %}
+
+
+{% for add_education in add_education %}
+
+
+<label>Name of College</label>
+<h2>{{ add_education.name_of_college }}</h2><br>
+<label> Passout Year</label>
+<h2>{{ add_education.passout_year}}</h2><br>
+<label>Subject</label>
+<h2>{{ add_education.subject }}</h2>
+
+
+
+{% endfor %}
+
 <a href="{% url 'add_education' %}">Add Education</a>
+
 
 {% endblock %}

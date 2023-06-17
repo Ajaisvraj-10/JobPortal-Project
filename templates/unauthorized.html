@@ -273,10 +273,10 @@ body{
         <span class="bg-403">403</span>
         <div class="text">
           <span class="hero-text"></span>
-          <span class="msg">can't let <span>you</span> in.</span>
+          <span class="msg">can't let <span>{{ request.user.username }}</span> in.</span>
           <span class="support">
             <span>unexpected?</span>
-            <a href="#">contact support</a>
+            <a href="{% url 'user_login' %}">Go Back <--</a>
           </span>
         </div>
         <div class="lock"></div>

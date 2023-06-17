@@ -8,7 +8,7 @@ from account .models import *
 from.decorators import company_login_required
 
 # Create your views here.
-
+@company_login_required
 def company_index(request):
     return render(request,'company/company_index.html')
 
