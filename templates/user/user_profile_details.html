@@ -32,10 +32,21 @@
 <h2>{{ add_education.subject }}</h2>
 
 
+{% endfor %}
+
+{% for addskill in addskill %}
+
+<label>Skill Name</label>
+<h2>{{ addskill.skill_name }}</h2><br>
+<label>Description</label>
+<h2>{{ addskill.description}}</h2><br>
 
 {% endfor %}
 
-<a href="{% url 'add_education' %}">Add Education</a>
+
+<a href="{% url 'add_education' %}">Add Education</a><br><br>
+
+<a href="{% url 'add_skill' %}">Add Skill</a>
 
 
 {% endblock %}

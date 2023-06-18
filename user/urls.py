@@ -10,4 +10,5 @@ urlpatterns = [
     path('user_profileview/', user_profileview, name='user_profileview'),
     path('user_profile_details/<int:id>/', user_profile_details, name='user_profile_details'),
     path('add_education', add_education, name='add_education'),
+    path('add_skill', add_skill, name='add_skill'),
 ]
