@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- application_list.html -->
+
+<h1>Registered Companies</h1>
+
+{% if registered_companies %}
+  <table>
+    <thead>
+      <tr>
+        <th>Company Name</th><br><br>
+        <th>Location</th>
+        <th>Logo</th><br><br>
+        <th>Contact Email</th>
+        <th>Contact Phone</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for registered_companies in registered_companies %}
+        <tr>
+          <td>{{ registered_companies.company_name }}</td>
+          <td>{{ registered_companies.location }}</td>
+          <td>{{ registered_companies.logo }}</td>
+          <td>{{ registered_companies.contact_email }}</td>
+          <td>{{ registered_companies.contact_phone }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% else %}
+  <p>No registered_companiess found.</p>
+{% endif %}
+
+{% endblock %}

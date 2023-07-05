@@ -8,7 +8,7 @@ from account .models import *
 from.decorators import company_login_required
 
 # Create your views here.
-@company_login_required
+@company_login_required 
 def company_index(request):
     return render(request,'company/company_index.html')
 
@@ -36,7 +36,7 @@ def company_registration(request):
         email = request.POST.get('email')
         password1 = request.POST.get('password')
         password2 = request.POST.get('confirm_password')
-        user =  Company.objects.filter(username=username).first()
+        user =  Company.objects.filter(username=username)
         if not user :
             if password1 == password2:
                 Company.objects.create_user(
@@ -46,7 +46,7 @@ def company_registration(request):
                     password=password2
                 )
                 messages.success(request, "Account create Successfuly")
-                return redirect('user_login')
+                return redirect('company_login')
             else:
                 messages.error(request, "Password does not match")        
     return render(request, 'company/company_registration.html')
@@ -54,7 +54,7 @@ def company_registration(request):
 
 def logout_company(request):
     logout(request)
-    return redirect("user_login")
+    return redirect("company_login")
 
 
 
@@ -193,3 +193,12 @@ def company_profile_edit(request, id):
         return redirect("company_details", id)
     
     return render(request, "company/company_profile_edit.html", context)
+
+
+
+def registered_companies(request):
+    
+    registered_companies = CompanyProfile.objects.all()
+    context = {"registered_companies":registered_companies}
+    
+    return render(request,'company/registered_companies.html',context)

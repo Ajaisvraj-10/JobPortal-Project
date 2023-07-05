@@ -90,30 +90,21 @@ def user_profileview(request):
     context = {'profileview':profileview}
     return render(request,'user/user_profileview.html',context)
 
-def user_profile(request):
-    user = request.user
-    addskill = AddSkills.objects.filter(user=user)
-    addexp = AddExperience.objects.filter(user=user)
-    addeduc = AddEducation.objects.filter(user=user)
-    addprofile = AddProject.objects.filter(user=user)
-
-    context = {
-        "user": user,
-        "addexp": addexp,
-        "addeduc": addeduc,
-        "addprofile": addprofile,
-       
-    } 
-    return render(request, "user/user_profile_details.html", context)
 
 
 @user_login_required
 def user_profile_details(request,id):
     profile_details = UserProfile.objects.get(id=id)
-    addskill = UserProfile.objects.get(user=request.user)
+    add_education = AddEducation.objects.filter(user=profile_details.user)
+    add_skill = AddSkills.objects.filter(user=profile_details.user)
+    add_experience = AddExperience.objects.filter(user=profile_details.user)
+    add_projects = AddProject.objects.filter(user=profile_details.user)
     context = {
         'profileview':profile_details,
-         "addskill": addskill,
+        'education_list': add_education,
+        'skill_list': add_skill,
+        'experience_list': add_experience,
+        'project_list': add_projects,
     }
     return render(request,'user/user_profile_details.html',context)
 
@@ -124,62 +115,68 @@ def add_education(request):
         name_of_college = request.POST.get('name_of_college')
         passout_year = request.POST.get('passout_year')
         subject = request.POST.get('subject') 
+        user = request.user
         AddEducation.objects.create( 
-            user = request.user,                        
+            user=user,                        
             name_of_college=name_of_college,
             passout_year=passout_year,
             subject=subject,
-            
         )
-        return redirect('user_profile_details')
-    return render(request,'user/add_education.html')
+        user_profile_id = user.userprofile.id
+        return redirect('user_profile_details', id=user_profile_id)
+    return render(request, 'user/add_education.html')
 
 
 @user_login_required
 def add_skill(request):
-    user=request.user
     if request.method == 'POST':
         skill_name = request.POST.get('skill_name')
         description = request.POST.get('description')
+        user=request.user
         AddSkills.objects.create(
+            user=user,
             skill_name = skill_name,
             description = description,
-            user=user
+            
         )
-        return redirect('user_profile_details',user.id)
+        user_profile_id = user.userprofile.id
+        return redirect('user_profile_details',id=user_profile_id)
     return render(request,'user/add_skill.html')
 
 
 @user_login_required
 def add_experience(request):
-    user = request.user
     if request.method == 'POST':
         company_name = request.POST.get('company_name')
         position = request.POST.get('position')
         start_date = request.POST.get('start_date')
         end_date = request.POST.get('end_date')
+        user = request.user
         AddExperience.objects.create(
+            user=user,
             company_name = company_name,
             position = position,
             start_date = start_date,
             end_date = end_date,
-            user=user
+            
         )
-        return redirect('user_profile_details')
+        user_profile_id = user.userprofile.id
+        return redirect('user_profile_details',id=user_profile_id)
     return render(request,'user/add_experience.html')
 
 
 def add_projects(request):
-    user = request.user
     if request.method == 'POST':
         title = request.POST.get('title')
         description = request.POST.get('description')
+        user = request.user
         AddProject.objects.create(
+            user=user,
             title = title,
             description = description,
-            user=user
         )
-        return redirect('user_profile_details')
-    return render(request,'user/add_project')
+        user_profile_id = user.userprofile.id
+        return redirect('user_profile_details',id=user_profile_id)
+    return render(request,'user/add_project.html')
 
 

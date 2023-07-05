@@ -2,51 +2,97 @@
 
 {% block content %}
 
+<div class="container">
+<h1 style="color: aliceblue; text-decoration: underline;">My Profile</h1><br>
 
-<h1>User Profile</h1>
+{% if profileview.profile_image %}
+        <img style="width: 190 ;height: 160;" src="{{ profileview.profile_image.url }}" alt="Profile Image">
+    {% else %}
+        <p>No profile image available</p>
+    {% endif %}
 
 {% if profileview %}
-    <h2>{{ user_profile.name }}</h2>
+    <h2 style="color: rgb(48, 111, 167);">Name: {{ profileview.name }}</h2>
     <p>Location: {{ profileview.location }}</p>
     <p>Contact Email: {{ profileview.cont_email }}</p>
     <p>Contact Phone: {{ profileview.cont_phone }}</p>
     <p>Gender: {{ profileview.gender }}</p>
-    {% if profileview.profile_image %}
-        <img src="{{ profileview.profile_image.url }}" alt="Profile Image">
-    {% else %}
-        <p>No profile image available</p>
-    {% endif %}
+
 {% else %}
     <p>User profile not found.</p>
+
 {% endif %}
+</div>
+<div class="container">
+    <h1 style="color: aliceblue;">Education</h1>
+    {% for add_education in education_list %}
+      <div>
+        <h3 style="color: rgb(48, 111, 167);">Name of College: {{ add_education.name_of_college }}</h3>
+        <p>Passout Year: {{ add_education.passout_year }}</p>
+        <p>Subject: {{ add_education.subject }}</p>
+      </div>
+    {% empty %}
+      <p>No education added yet.</p>
+    {% endfor %}
+    <a href="{% url 'add_education' %}">Add Education</a><br><br>
+  </div>
+  
 
 
-{% for add_education in add_education %}
 
 
-<label>Name of College</label>
-<h2>{{ add_education.name_of_college }}</h2><br>
-<label> Passout Year</label>
-<h2>{{ add_education.passout_year}}</h2><br>
-<label>Subject</label>
-<h2>{{ add_education.subject }}</h2>
+
+<div class="container">
+  <h1 style="color: aliceblue;">Skills</h1>
+    {% for add_skill in skill_list %}
+      <div>
+        <h3 style="color: rgb(48, 111, 167);"> Skill: {{ add_skill.skill_name }}</h3>
+        <p>Description: {{ add_skill.description }}</p>
+      </div>
+    {% empty %}
+      <p>No skill added yet.</p>
+    {% endfor %}
+    <a href="{% url 'add_skill' %}">Add Skill</a>
+  </div>
+  
 
 
-{% endfor %}
-
-{% for addskill in addskill %}
-
-<label>Skill Name</label>
-<h2>{{ addskill.skill_name }}</h2><br>
-<label>Description</label>
-<h2>{{ addskill.description}}</h2><br>
-
-{% endfor %}
 
 
-<a href="{% url 'add_education' %}">Add Education</a><br><br>
 
-<a href="{% url 'add_skill' %}">Add Skill</a>
+<div class="container">
+    {% for add_experience in experience_list %}
+    <h1 style="color: aliceblue;">Experience</h1>
+      <div>
+        <h3 style="color: rgb(48, 111, 167);">{{ add_experience.company_name }}</h3>
+        <p>Position: {{ add_experience.position }}</p>
+        <p>Start Date: {{ add_experience.start_date }}</p>
+        <p>End Date: {{ add_experience.end_date }}</p>
+      </div>
+    {% empty %}
+      <p>No Experience added yet.</p>
+    {% endfor %}
+    <a href="{% url 'add_experience' %}">Add Experience</a>
+  </div>
+  
 
+
+
+
+
+<div class="container">
+    {% for add_projects in project_list %}
+    <h1 style="color: aliceblue;">Projects</h1>
+      <div>
+        <h3 style="color: rgb(48, 111, 167);">Title: {{ add_projects.title }}</h3>
+        <p>Description: {{ add_projects.description }}</p>
+      </div>
+    {% empty %}
+      <p>No Projects added yet.</p>
+    {% endfor %}
+    <a href="{% url 'add_projects' %}">Add Projects</a>
+
+  </div>
+  
 
 {% endblock %}

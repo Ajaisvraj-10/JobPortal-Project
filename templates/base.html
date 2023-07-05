@@ -39,13 +39,16 @@
         .spinner-border text-primary{
             color: #0089ff !important;
         }
+        .btn btn-primary py-3 px-5{
+            color: #0089ff;
+        }
         </style>
     
     
     <!DOCTYPE html>
     <html lang="en">
     
-    <div class="container-xxl bg-white p-0">
+    <div class="container-xxl bg-dark p-0">
         <!-- Spinner Start -->
         <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
             <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
@@ -68,7 +71,8 @@
                     {% if request.user.is_authenticated %}
                     <a style="margin-top: 25px; margin-right: 100px; color: #0089ff;" href="{% url 'logout_user' %}"> Logout</a>
                     {% else %}
-                    <a style="margin-top: 25px; margin-right: 55px;color: #0089ff;" href="{% url 'user_login' %}">Login</a>
+                    <a style="margin-top: 25px; margin-right: 55px;color: #0089ff;" href="{% url 'user_login' %}">User Login</a>
+                    <a style="margin-top: 25px; margin-right: 55px;color: #0089ff;" href="{% url 'company_login' %}">Company Login</a>
                     <a style="margin-top: 25px; margin-right: 30px;color: #0089ff;" href="{% url 'user_register' %}">User Register</a>
                     <a style="margin-top: 25px; margin-right: 10px;color: #0089ff;" href="{% url 'company_register' %}">Company Register</a>
                    {% endif %}
@@ -82,8 +86,6 @@
                             <a href="{% url 'company_joblist' %}" class="dropdown-item">Company JobList</a>
                             <a href="{% url 'application_list' %}" class="dropdown-item">Application List</a>
                             <a href="{% url 'application_submission' %}" class="dropdown-item">Application Submission</a>
-                            
-
                         </div>
                     </div>
                     <div class="nav-item dropdown">
@@ -111,10 +113,10 @@
         {% endblock %}
 
  <!-- Footer Start -->
- <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
-    <div class="container py-5">
-        <div class="row g-5">
-            <div class="col-lg-3 col-md-6">
+ <div style="background-color: #1c1d1d !important;"     class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+    <div style="background-color: #1d1d1d;" class="container py-5">
+        <div  class="row g-5">
+            <div  class="col-lg-3 col-md-6">
                 <h5 class="text-white mb-4">Company</h5>
                 <a class="btn btn-link text-white-50" href="">About Us</a>
                 <a class="btn btn-link text-white-50" href="">Contact Us</a>

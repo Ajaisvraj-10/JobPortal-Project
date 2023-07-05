@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form method="POST">
+    {% csrf_token %}
+    
+    <label for="title">Title:</label>
+    <input type="text" name="title" id="title" required><br>
+    
+    <label for="description">Description:</label>
+    <input type="text" name="description" id="description" required><br>
+  
+    <button type="submit">Add Project</button><br>
+  </form>
+  
+
+{% endblock %}

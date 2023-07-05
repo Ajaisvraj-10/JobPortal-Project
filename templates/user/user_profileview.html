@@ -1,21 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
 <div class="container">
-    {% for profileview in profileview %}
-    
     <h1>Profiles</h1>
-    
-    
-    <tr>
-        <br><br>
-        <td><h2><a  href="{% url 'user_profile_details' profileview.id %}">{{profileview.name}}</a></h2></td>
-    </tr>
-    
-    
+
+    {% for profile in profileview %}
+        <tr>
+            <td><h2><a href="{% url 'user_profile_details' id=profile.id %}">{{ profile.name }}</a></h2></td>
+        </tr>
     {% endfor %}
-    <br><br><br><br><br><br><br><br>
-    </div>
+</div>
 
 {% endblock %}

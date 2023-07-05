@@ -11,4 +11,6 @@ urlpatterns = [
     path('user_profile_details/<int:id>/', user_profile_details, name='user_profile_details'),
     path('add_education', add_education, name='add_education'),
     path('add_skill', add_skill, name='add_skill'),
+    path('add_experience', add_experience, name='add_experience'),
+    path('add_projects', add_projects, name='add_projects'),
 ]

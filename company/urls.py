@@ -15,4 +15,5 @@ urlpatterns = [
     path('application_submission',appliction_submision,name ='application_submission'),
     path('application_list',appliction_list,name ='application_list'),  
     path('company_profile_edit/<int:id>/',company_profile_edit,name ='company_profile_edit'),
+    path('registered_companies',registered_companies,name ='registered_companies'),
 ]
