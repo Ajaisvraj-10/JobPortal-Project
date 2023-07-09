@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+    .container{
+        text-align: start;
+    }
+</style>
+
+
+
+<div class="container">
+<h1 style="color: aliceblue;">Registered Users</h1>
+<ul>
+    {% for user in users %}
+        <li style="color: rgb(43, 127, 212);">{{ user.name }}</li>
+    {% empty %}
+        <li>No registered users.</li>
+    {% endfor %}
+</ul>
+
+<h1 style="color: aliceblue;">Registered Companies</h1>
+<ul>
+    {% for company in companies %}
+        <li style="color: rgb(43, 127, 212);">{{ company.company_name }}</li>
+    {% empty %}
+        <li>No registered companies.</li>
+    {% endfor %}
+</ul>
+</div>
+
+
+
+
+{% endblock %}

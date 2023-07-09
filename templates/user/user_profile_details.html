@@ -1,16 +1,20 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+<style>
+  .container{
+    text-align: center;
+  }
+</style>
 <div class="container">
-<h1 style="color: aliceblue; text-decoration: underline;">My Profile</h1><br>
+<h1 style="color: aliceblue; text-decoration: double;">My Profile</h1><br><br>
 
 {% if profileview.profile_image %}
         <img style="width: 190 ;height: 160;" src="{{ profileview.profile_image.url }}" alt="Profile Image">
     {% else %}
         <p>No profile image available</p>
     {% endif %}
-
+<br><br>
 {% if profileview %}
     <h2 style="color: rgb(48, 111, 167);">Name: {{ profileview.name }}</h2>
     <p>Location: {{ profileview.location }}</p>
@@ -32,9 +36,9 @@
         <p>Subject: {{ add_education.subject }}</p>
       </div>
     {% empty %}
-      <p>No education added yet.</p>
+      <p>No educations added yet.</p>
     {% endfor %}
-    <a href="{% url 'add_education' %}">Add Education</a><br><br>
+    <a href="{% url 'add_education' %}">⨠ Add Education</a><br><br>
   </div>
   
 
@@ -50,9 +54,9 @@
         <p>Description: {{ add_skill.description }}</p>
       </div>
     {% empty %}
-      <p>No skill added yet.</p>
+      <p>No skills added yet.</p>
     {% endfor %}
-    <a href="{% url 'add_skill' %}">Add Skill</a>
+    <a href="{% url 'add_skill' %}">⨠ Add Skill</a>
   </div>
   
 
@@ -61,8 +65,8 @@
 
 
 <div class="container">
+  <h1 style="color: aliceblue;">Experience</h1>
     {% for add_experience in experience_list %}
-    <h1 style="color: aliceblue;">Experience</h1>
       <div>
         <h3 style="color: rgb(48, 111, 167);">{{ add_experience.company_name }}</h3>
         <p>Position: {{ add_experience.position }}</p>
@@ -70,9 +74,9 @@
         <p>End Date: {{ add_experience.end_date }}</p>
       </div>
     {% empty %}
-      <p>No Experience added yet.</p>
+      <p>No Experiences added yet.</p>
     {% endfor %}
-    <a href="{% url 'add_experience' %}">Add Experience</a>
+    <a href="{% url 'add_experience' %}">⨠ Add Experience</a>
   </div>
   
 
@@ -81,8 +85,8 @@
 
 
 <div class="container">
+  <h1 style="color: aliceblue;">Projects</h1>
     {% for add_projects in project_list %}
-    <h1 style="color: aliceblue;">Projects</h1>
       <div>
         <h3 style="color: rgb(48, 111, 167);">Title: {{ add_projects.title }}</h3>
         <p>Description: {{ add_projects.description }}</p>
@@ -90,7 +94,7 @@
     {% empty %}
       <p>No Projects added yet.</p>
     {% endfor %}
-    <a href="{% url 'add_projects' %}">Add Projects</a>
+    <a href="{% url 'add_projects' %}">⨠ Add Projects</a>
 
   </div>
   
