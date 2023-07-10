@@ -5,5 +5,5 @@ from .models import *
 
 admin.site.register(CompanyProfile)
 admin.site.register(AddJob)
-admin.site.register(AppllicationSubmition)
+# admin.site.register(AppllicationSubmition)
 

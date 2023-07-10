@@ -143,31 +143,31 @@ def company_jobdetails(request,id):
 
 
 
-@company_login_required
-def appliction_submision(request):
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        job = request.POST.get('job')
-        resume = request.POST.get('resume')
-        status = request.FILES.get('status')
+# @company_login_required
+# def appliction_submision(request):
+#     if request.method == 'POST':
+#         username = request.POST.get('username')
+#         job = request.POST.get('job')
+#         resume = request.POST.get('resume')
+#         status = request.FILES.get('status')
     
-        AppllicationSubmition.objects.create(
-            user = request.user,
-            username=username,
-            job=job,
-            resume=resume,
-            status=status
-        )
-        return redirect('application_list')
-    return render(request,'company/application_submission.html',{'choices':AppllicationSubmition.selection_choices})
+#         AppllicationSubmition.objects.create(
+#             user = request.user,
+#             username=username,
+#             job=job,
+#             resume=resume,
+#             status=status
+#         )
+#         return redirect('application_list')
+#     return render(request,'company/application_submission.html',{'choices':AppllicationSubmition.selection_choices})
 
 
 
-@company_login_required
-def appliction_list(request):
-    application = AppllicationSubmition.objects.all()
-    context = {'application':application}
-    return render(request,'company/application_list.html',context)
+# @company_login_required
+# def appliction_list(request):
+#     application = AppllicationSubmition.objects.all()
+#     context = {'application':application}
+#     return render(request,'company/application_list.html',context)
 
 
 

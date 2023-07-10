@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+<h1>Apply for Job</h1>
+
+<form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  
+  <label for="name">Name:</label>
+  <input type="text" name="name" required>
+  
+  <label for="email">Email:</label>
+  <input type="email" name="email" required>
+  
+  <label for="resume">Resume:</label>
+  <input type="file" name="resume" accept=".pdf,.doc,.docx" required>
+  
+  <button type="submit">Apply</button>
+</form>
+
+{% endblock %}

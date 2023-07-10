@@ -13,4 +13,6 @@ urlpatterns = [
     path('add_skill', add_skill, name='add_skill'),
     path('add_experience', add_experience, name='add_experience'),
     path('add_projects', add_projects, name='add_projects'),
+    path('apply_job/<int:job_id>/', apply_job, name='apply_job'),
+    path('job_listing', job_listing, name='job_listing'),
 ]

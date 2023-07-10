@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<div class="container">
+    {% if jobs %}
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Serial Number</th>
+            <th>Job Title</th>
+            <th>Company</th>
+            <th>Created</th>
+            <th>Uploaded By </th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for job in jobs %}
+            <tr>
+              <td>{{ forloop.counter }}</td>
+              <td>{{ job.job_tittle }}</td>
+              <td>{{ job.company_name }}</td>
+              <td>{{ job.created }}</td>
+              <td>{{ job.user }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p>No jobs found.</p>
+    {% endif %}
+  </div>
+  
+{% endblock %}

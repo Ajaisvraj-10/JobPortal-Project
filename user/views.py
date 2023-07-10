@@ -1,10 +1,12 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login,logout
 from account .models import *
 from .models import *
 from.decorators import user_login_required
+from company.models import AddJob
+
 
 # Create your views here.
 @user_login_required
@@ -180,3 +182,24 @@ def add_projects(request):
     return render(request,'user/add_project.html')
 
 
+def apply_job(request, job_id):
+    job = AddJob.objects.get(id=job_id)
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        resume = request.FILES.get('resume')
+        
+        JobApplication.objects.create(
+            job=job,
+            name=name,
+            email=email,
+            resume=resume,
+        )
+        return redirect('job_listing')
+    return render(request, 'user/apply_job.html', {'job': job})
+
+
+
+def job_listing(request, job_id):
+    job = get_object_or_404(JobListing, id=job_id)
+    return render(request, 'user/job_listing.html', {'job': job})

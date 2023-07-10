@@ -32,20 +32,20 @@ class AddJob(models.Model):
         return self.job_tittle
     
 
-class AppllicationSubmition(models.Model):
+# class AppllicationSubmition(models.Model):
     
-    selection_choices = (
-        ('pending','Pending'),
-        ('selected','Selected'),
-        ('not selected','Not Selected')
-    )
-    user = models.ForeignKey(UserProfile,on_delete=models.CASCADE)
-    username = models.CharField(max_length=100,null= True)
-    job = models.ForeignKey(AddJob,on_delete=models.CASCADE)
-    resume = models.FileField(upload_to='resume/',null=True)
-    status = models.CharField(max_length=100,default='pending')
+#     selection_choices = (
+#         ('pending','Pending'),
+#         ('selected','Selected'),
+#         ('not selected','Not Selected')
+#     )
+#     user = models.ForeignKey(UserProfile,on_delete=models.CASCADE)
+#     username = models.CharField(max_length=100,null= True)
+#     job = models.ForeignKey(AddJob,on_delete=models.CASCADE)
+#     resume = models.FileField(upload_to='resume/',null=True)
+#     status = models.CharField(max_length=100,default='pending')
     
-    def __str__(self):
-        return f"{self.username} - {self.job.title}"    
+#     def __str__(self):
+#         return f"{self.username} - {self.job.title}"    
     
     

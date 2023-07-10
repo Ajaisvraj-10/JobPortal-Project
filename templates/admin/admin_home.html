@@ -1,4 +1,4 @@
-extends 'base.html'
+{% extends 'base.html' %}
 
 {% block content %}
 
@@ -9,7 +9,21 @@ extends 'base.html'
     <title>Admin Home</title>
 </head>
 <body>
-    <h1>Welcome to the Admin Panel</h1>
+    <style>
+        .container{
+            text-align: start;
+        }
+    </style>
+    <div class="container">
+        <br>
+    <h1 style="color: aliceblue;">Welcome to the Admin Panel</h1><br><br>
+
+    <li><a href="{% url 'registered_users' %}"> ⨠ Registered Users & Company</a></li><br><br>
+
+   <li><a href="{% url 'posted_jobs' %}"> ⨠ Posted Jobs</a></li> 
+
+
+</div>
    
 </body>
 </html>
