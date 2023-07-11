@@ -1,6 +1,7 @@
 from django.shortcuts import render ,redirect
 from django.http import HttpResponse
 from .models import *
+from user.models import JobApplication
 from django.contrib.auth import authenticate, login,logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -23,7 +24,7 @@ def company_login(request):
         if user:
             login(request,user)
             messages.success(request,"Login Success")
-            return redirect("company_index")
+            return redirect("user_index")
         messages.error(request, "Invalid username or password")
     return render(request,"company/company_login.html")
 
@@ -46,7 +47,7 @@ def company_registration(request):
                     password=password2
                 )
                 messages.success(request, "Account create Successfuly")
-                return redirect('company_login')
+                return redirect('user_login')
             else:
                 messages.error(request, "Password does not match")        
     return render(request, 'company/company_registration.html')
@@ -54,7 +55,7 @@ def company_registration(request):
 
 def logout_company(request):
     logout(request)
-    return redirect("company_login")
+    return redirect("user_login")
 
 
 
@@ -197,8 +198,21 @@ def company_profile_edit(request, id):
 
 
 def registered_companies(request):
-    
     registered_companies = CompanyProfile.objects.all()
     context = {"registered_companies":registered_companies}
-    
     return render(request,'company/registered_companies.html',context)
+
+
+def job_applicants(request, id):
+    job = AddJob.objects.get(id=id)
+    applicants = JobApplication.objects.filter(job=job)
+    context = {'job': job, 'applicants': applicants}
+    return render(request, 'company/job_applicants.html', context)
+
+
+def job_applicants_list(request):
+    applicants_list = JobApplication.objects.all()
+    context = {
+        'applicants_list':applicants_list
+    }
+    return render(request,'company/job_applicants_list.html',context)

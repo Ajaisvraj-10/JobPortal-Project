@@ -3,17 +3,20 @@
 {% block content %}
 
 
-<!-- job_listing.html -->
-<h1>Job Listings</h1>
+{% for job in joblist %}
 
-{% for job in jobs %}
-  <div class="job-card">
-    <h2>{{ job.job_title }}</h2>
+<tr><br>
+  <div class="container">
+    <h3 style="color: aqua;">{{ job.job_tittle }}</h3><br>
+    <p>{{ job.description }}</p>
     <p>Company: {{ job.company_name }}</p>
-    <p>Location: {{ job.location }}</p>
-    <p>Description: {{ job.description }}</p>
-    <a href="{% url 'apply_job' job.id %}">Apply</a>
+    <p>Job Type: {{ job.job_type }}</p>
+    <p>Salary : {{ job.salary }}</p>
+    <a href="{% url 'apply_job' id=job.id %}" class="btn btn-primary">Apply Job</a><br><br>
   </div>
+</tr>
+{% empty %}
+  <p>No jobs available.</p>
 {% endfor %}
 
 

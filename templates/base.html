@@ -77,8 +77,7 @@
                     {% if request.user.is_authenticated %}
                     <a style="margin-top: 25px; margin-right: 100px; color: #000000;" href="{% url 'logout_user' %}"> Logout</a>
                     {% else %}
-                    <a style="margin-top: 25px; margin-right: 55px;color: #000203;" href="{% url 'user_login' %}">User Login</a>
-                    <a style="margin-top: 25px; margin-right: 55px;color: #000204;" href="{% url 'company_login' %}">Company Login</a>
+                    <a style="margin-top: 25px; margin-right: 55px;color: #000203;" href="{% url 'user_login' %}">Login</a>
                     <a style="margin-top: 25px; margin-right: 30px;color: #000000;" href="{% url 'user_register' %}">User Register</a>
                     <a style="margin-top: 25px; margin-right: 10px;color: #000000;" href="{% url 'company_register' %}">Company Register</a>
                    {% endif %}
@@ -90,6 +89,7 @@
                             <a href="{% url 'company_profile' %}" class="dropdown-item">Company Profile</a>
                             <a href="{% url 'company_addjob' %}" class="dropdown-item">Company AddJob</a>
                             <a href="{% url 'company_joblist' %}" class="dropdown-item">Company JobList</a>
+                            <a href="{% url 'job_applicants_list' %}" class="dropdown-item">Applicants List</a>
                         </div>
                     </div>
                     <div class="nav-item dropdown">
@@ -98,7 +98,12 @@
                             <a href="{% url 'adduser_profile' %}" class="dropdown-item">Add User Profile</a>
                             <a href="{% url 'user_profileview' %}" class="dropdown-item">User Profile</a>
 
-                            
+                        
+                            <a href="{% url 'job_listing' %}" class="dropdown-item">JobList</a>
+
+                            <a href="{% url 'applied_jobs' %}" class="dropdown-item">Applied Jobs</a>
+
+                        
                             {% endif %}
                         </div>
                     </div>

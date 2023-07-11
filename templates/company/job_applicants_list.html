@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 style="color: aliceblue;">Job Applicants List</h1><br>
+    
+    {% if applicants_list %}
+        <ul>
+            {% for applicant in applicants_list %}
+                {% with job=applicant.job %}
+                    <li>
+                        <a href="{% url 'job_applicants' id=job.id %}">{{ applicant.name }}</a>
+                    </li>
+                {% endwith %}
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No applicants found.</p>
+    {% endif %}
+{% endblock %}
+

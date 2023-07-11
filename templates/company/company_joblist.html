@@ -8,8 +8,9 @@
 <head>
     <title>Job List</title>
 </head>
-<body>
-    <h1>Job List</h1>
+<body><br>
+    <div class="container">
+    <h1 style="color: rgb(252, 252, 252);">Job List</h1><br>
     {% if joblist %}
         <ul>
             {% for joblist in joblist %}
@@ -19,6 +20,7 @@
     {% else %}
         <p>No jobs available.</p>
     {% endif %}
+</div>
 </body>
 </html>
 

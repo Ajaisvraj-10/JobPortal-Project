@@ -3,12 +3,14 @@
 {% block content %}
 
 
-<div class="container">
- <label>Company Name</label><h1>{{profiles.company_name}}</h1>
 
-<label>Location</label><h4>{{profiles.location}}</h4>
-<label>Email</label><h4>{{profiles.contact_email}}</h4>
-<label>Contact</label><h4>{{profiles.contact_phone}}</h4>
+<div class="container"><br><br>
+    <h2 style="color: rgb(0, 136, 255); text-decoration: underline;"> Your Profile Details </h2>
+ <h1 style="color: aliceblue;">Company Name</h1><h4 style="color: aqua;">{{profiles.company_name}}</h4>
+
+<label style="color: aliceblue;">Location</label><h4 style="color: aqua;">{{profiles.location}}</h4>
+<label style="color: aliceblue;">Email</label><h4 style="color: aqua;">{{profiles.contact_email}}</h4>
+<label style="color: aliceblue;">Contact</label><h4 style="color: aqua;">{{profiles.contact_phone}}</h4>
 
 {% if profiles.logo %}
 

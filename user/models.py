@@ -59,10 +59,11 @@ class AddProject(models.Model):
 
 
 class JobApplication(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE,default=1)
     job = models.ForeignKey(AddJob, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     email = models.EmailField()
-    resume = models.FileField(upload_to='profile_images/',null=True, blank=True)
+    resume = models.FileField(upload_to='resumes/',null=True, blank=True)
 
     def __str__(self):
         return f"Application for {self.job.job_title} by {self.name}"

@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect,get_object_or_404
+from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login,logout
@@ -6,10 +6,11 @@ from account .models import *
 from .models import *
 from.decorators import user_login_required
 from company.models import AddJob
+from django.http import HttpResponse
 
 
 # Create your views here.
-@user_login_required
+
 def user_index(request):
     return render(request,"user/user_index.html")
 
@@ -167,6 +168,8 @@ def add_experience(request):
     return render(request,'user/add_experience.html')
 
 
+
+@user_login_required
 def add_projects(request):
     if request.method == 'POST':
         title = request.POST.get('title')
@@ -182,24 +185,47 @@ def add_projects(request):
     return render(request,'user/add_project.html')
 
 
-def apply_job(request, job_id):
-    job = AddJob.objects.get(id=job_id)
+
+@user_login_required
+def apply_job(request,id):
+    job = AddJob.objects.get(id=id)
+    
+    if JobApplication.objects.filter(user=request.user, job=job).exists():
+        # User has already applied for this job
+        return HttpResponse("You have already applied for this job.")
+    
     if request.method == 'POST':
         name = request.POST.get('name')
         email = request.POST.get('email')
         resume = request.FILES.get('resume')
         
         JobApplication.objects.create(
+            user = request.user,
             job=job,
             name=name,
             email=email,
             resume=resume,
         )
         return redirect('job_listing')
-    return render(request, 'user/apply_job.html', {'job': job})
+    return render(request, 'user/apply_job.html')
 
 
+@user_login_required
+def job_listing(request):
+    joblist = AddJob.objects.all()
+    context = {
+        'joblist':joblist
+    }
+    return render(request, 'user/job_listing.html',context)
 
-def job_listing(request, job_id):
-    job = get_object_or_404(JobListing, id=job_id)
-    return render(request, 'user/job_listing.html', {'job': job})
+
+@user_login_required
+def applied_jobs(request):
+    user = request.user
+    applied_list = JobApplication.objects.filter(user=user)
+    context = {
+        'applied_list':applied_list
+    }
+    return render(request,'user/applied_jobs.html',context)
+
+

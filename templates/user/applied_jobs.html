@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+{% for applied_list in applied_list %}
+  <div class="job-application">
+    <h3 style="color: aqua;">{{ applied_list.job.job_tittle }}</h3><br>
+    <p style="color: aliceblue;">Company: {{ applied_list.job.company_name }}</p><br>
+    <p style="color: aliceblue;">Application Date: {{ applied_list.job.created }}</p><br>
+  </div>
+{% empty %}
+  <p>No jobs applied.</p>
+{% endfor %}
+
+
+
+
+{% endblock %}

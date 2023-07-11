@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container"><br><br>
+    <h1 style="color: aliceblue;">Job Applicants</h1><br>
+    <h2>{{ job.job_title }}</h2>
+    
+    {% if applicants %}
+        <ul>
+            {% for applicant in applicants %}
+                <li>{{ applicant.name }} - {{ applicant.email }} - <a href="{{ applicant.resume.url }}" download>Download Resume</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No applicants found.</p>
+    {% endif %}
+</div>
+{% endblock %}

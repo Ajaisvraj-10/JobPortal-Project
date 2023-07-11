@@ -178,9 +178,9 @@
                                 <div class="row g-4">
                                     <div class="col-sm-12 col-md-8 d-flex align-items-center">
                                         <img class="flex-shrink-0 img-fluid border rounded" src="{% static 'img/com-logo-1.jpg' %}" alt="" style="width: 80px; height: 80px;">
-                                        {% for job in jobs %}
+                                    
                                         <div class="text-start ps-4">
-                                            <h5 style="color: #ffffff;" class="mb-3">{{ job.job_tittle }}</h5>
+                                            <h5 style="color: #ffffff;" class="mb-3">{{ job.company_name }}</h5>
                                             <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2">{{ job.location }}</i></span>
                                             <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i>Full Time</span>
                                             <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i>$123 - $456</span>
@@ -191,8 +191,9 @@
                                             <a class="btn btn-light btn-square me-3" href=""><i class="far fa-heart text-primary"></i></a>
                                             <a style="background-color: #000000;" class="btn btn-primary" href="">Apply Now</a>
                                         </div>
+                                   
                                         <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>Date Line: 01 Jan, 2045</small>
-                                        {% endfor %}
+                                    
                                     </div>
                                 </div>
                             </div>
