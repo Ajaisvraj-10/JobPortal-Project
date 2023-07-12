@@ -8,29 +8,31 @@
     <title>Add Job</title>
 </head>
 <body>
-    <h1>Add Job</h1>
+    <div class="container"><br>
+    <h1 style="color: aliceblue;">Add Job</h1><br>
     <form method="POST">
         {% csrf_token %}
         <label for="company_name">Company Name:</label>
-        <input type="text" id="company_name" name="company_name" required><br>
+        <input type="text" id="company_name" name="company_name" placeholder="Company Name" required><br><br>
         <label for="location">Location:</label>
-        <input type="text" id="location" name="location" required><br>
+        <input type="text" id="location" name="location" placeholder="Location" required><br><br>
         <label for="job_title">Job Title:</label>
-        <input type="text" id="job_title" name="job_title" required><br>
+        <input type="text" id="job_title" name="job_title" placeholder="Title" required><br><br>
         <label for="description">Description:</label>
-        <textarea id="description" name="description" required></textarea><br>
+        <textarea id="description" name="description" placeholder="Description" required></textarea><br><br>
         <label for="job_type">Job Type:</label>
-        <input type="text" id="job_type" name="job_type" required><br>
+        <input type="text" id="job_type" name="job_type" placeholder="Job Type" required><br><br>
         <label for="salary">Salary:</label>
-        <input type="text" id="salary" name="salary" required><br>
+        <input type="text" id="salary" name="salary" placeholder="Salary" required><br><br>
         <label for="skills_required">Skills Required:</label>
-        <input type="text" id="skills_required" name="skills_required" required><br>
+        <input type="text" id="skills_required" name="skills_required" placeholder="Skills Required" required><br><br>
         <label for="education_required">Education Required:</label>
-        <input type="text" id="education_required" name="education_required" required><br>
+        <input type="text" id="education_required" name="education_required" placeholder="Education Required" required><br><br>
         <label for="experience_required">Experience Required:</label>
-        <input type="text" id="experience_required" name="experience_required" required><br>
-        <input type="submit" value="Add Job">
+        <input type="text" id="experience_required" name="experience_required" placeholder="Experience Required" required><br><br>
+        <input style="background-color: rgb(26, 143, 201);" type="submit" value="Add Job">
     </form>
+</div>
 </body>
 </html>
 

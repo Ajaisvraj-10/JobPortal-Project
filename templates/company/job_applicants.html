@@ -3,16 +3,17 @@
 {% block content %}
 <div class="container"><br><br>
     <h1 style="color: aliceblue;">Job Applicants</h1><br>
-    <h2>{{ job.job_title }}</h2>
-    
+  <h2 style="color: rgb(25, 106, 177)"> Post :</h2> <h3 style="color: aqua;">{{ job.job_tittle }}</h3><br>
+
     {% if applicants %}
         <ul>
             {% for applicant in applicants %}
-                <li>{{ applicant.name }} - {{ applicant.email }} - <a href="{{ applicant.resume.url }}" download>Download Resume</a></li>
+                <li>{{ applicant.name }} - {{ applicant.email }} - <a href="{{ applicant.resume.url }}" download> ⨠ Download {{ applicant.name }} Resume</a></li>
             {% endfor %}
         </ul>
     {% else %}
         <p>No applicants found.</p>
     {% endif %}
+    
 </div>
 {% endblock %}

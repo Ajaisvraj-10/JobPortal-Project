@@ -3,22 +3,23 @@
 {% block content %}
 
 
-
-<h1>Apply for Job</h1>
+<div class="container"><br>
+<h1 style="color: aliceblue;">Apply for Job</h1><br><br>
 
 <form method="POST" enctype="multipart/form-data">
   {% csrf_token %}
   
   <label for="name">Name:</label>
-  <input type="text" name="name" required>
+  <input style="border-radius: 30%;" type="text" name="name" required><br><br>
   
   <label for="email">Email:</label>
-  <input type="email" name="email" required>
+  <input style="border-radius: 30%;" type="email" name="email" required><br><br>
   
   <label for="resume">Resume:</label>
-  <input type="file" name="resume" accept=".pdf,.doc,.docx" required>
+  <input type="file" name="resume" accept=".pdf,.doc,.docx" required><br><br>
   
-  <button type="submit">Apply</button>
+  <button style="background-color: aqua;" type="submit">Apply</button>
 </form>
+</div>
 
 {% endblock %}

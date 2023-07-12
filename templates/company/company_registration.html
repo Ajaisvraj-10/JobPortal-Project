@@ -1,23 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-<h2>Company Register</h2>
+<div class="container"><br>
+<h1 style="color: aliceblue;">Company Registeration</h1><br>
 <form method="post">
     {% csrf_token %}
 
-    <label>Username</label> <input type="text" name="username"> <br>
+    <label>Username :</label> <input style="border-radius: 30%;" type="text" name="username"> <br><br>
 
-    <label>Company Name</label> <input type="text" name="company_name"> <br>
+    <label>Company Name :</label> <input style="border-radius: 30%;" type="text" name="company_name"> <br><br>
 
-    <label>Email</label> <input type="email" name="email"> <br>
+    <label>Email :</label> <input style="border-radius: 30%;" type="email" name="email"> <br><br>
 
-    <label>Password</label> <input type="password" name="password"> <br>
+    <label>Password :</label> <input style="border-radius: 30%;" type="password" name="password"> <br><br>
 
-    <label>Confirm Password</label> <input type="password" name="confirm_password"> <br>
+    <label>Confirm Password :</label> <input style="border-radius: 30%;" type="password" name="confirm_password"> <br><br>
 
-    <label>Register</label> <input type="submit">
+    <label>Register :</label> <input style="background-color: aqua;" type="submit">
 
 </form>
-
+</div>
 {% endblock %}

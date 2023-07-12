@@ -196,20 +196,20 @@ def company_profile_edit(request, id):
     return render(request, "company/company_profile_edit.html", context)
 
 
-
+@company_login_required
 def registered_companies(request):
     registered_companies = CompanyProfile.objects.all()
     context = {"registered_companies":registered_companies}
     return render(request,'company/registered_companies.html',context)
 
-
+@company_login_required
 def job_applicants(request, id):
     job = AddJob.objects.get(id=id)
     applicants = JobApplication.objects.filter(job=job)
     context = {'job': job, 'applicants': applicants}
     return render(request, 'company/job_applicants.html', context)
 
-
+@company_login_required
 def job_applicants_list(request):
     applicants_list = JobApplication.objects.all()
     context = {

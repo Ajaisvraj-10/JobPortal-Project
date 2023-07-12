@@ -2,20 +2,23 @@
 
 {% block content %}
 
+<div class="container"><br>
+  <h1 style="color: aliceblue;">Add Your Education</h1><br>
 <form method="POST">
     {% csrf_token %}
     
     <label for="name_of_college">Name of College:</label>
-    <input type="text" name="name_of_college" id="name_of_college" required><br>
+    <input style="border-radius: 30%;" type="text" name="name_of_college" id="name_of_college" required><br><br>
     
     <label for="passout_year">Passout Year:</label>
-    <input type="text" name="passout_year" id="passout_year" required><br>
+    <input style="border-radius: 30%;" type="text" name="passout_year" id="passout_year" required><br><br>
     
     <label for="subject">Subject:</label>
-    <input type="text" name="subject" id="subject" required><br>
+    <input style="border-radius: 30%;" type="text" name="subject" id="subject" required><br><br>
     
-    <button type="submit">Add Education</button><br>
+    <button style="background-color: rgb(18, 219, 172);" type="submit">Add Education</button><br>
   </form>
+</div>
   
 
 

@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="container"><br>
     <h1 style="color: aliceblue;">Job Applicants List</h1><br>
     
     {% if applicants_list %}
@@ -16,5 +17,6 @@
     {% else %}
         <p>No applicants found.</p>
     {% endif %}
+</div>
 {% endblock %}
 
