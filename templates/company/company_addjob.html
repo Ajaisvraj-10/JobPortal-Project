@@ -1,40 +1,81 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
 <!DOCTYPE html>
 <html>
 <head>
     <title>Add Job</title>
+    <style>
+        body {
+            background-color: #000000;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #336699;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+        }
+        input[type="submit"] {
+            background-color: #1a8fc9;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #13709e;
+        }
+    </style>
 </head>
 <body>
-    <div class="container"><br>
-    <h1 style="color: aliceblue;">Add Job</h1><br>
-    <form method="POST">
-        {% csrf_token %}
-        <label for="company_name">Company Name:</label>
-        <input type="text" id="company_name" name="company_name" placeholder="Company Name" required><br><br>
-        <label for="location">Location:</label>
-        <input type="text" id="location" name="location" placeholder="Location" required><br><br>
-        <label for="job_title">Job Title:</label>
-        <input type="text" id="job_title" name="job_title" placeholder="Title" required><br><br>
-        <label for="description">Description:</label>
-        <textarea id="description" name="description" placeholder="Description" required></textarea><br><br>
-        <label for="job_type">Job Type:</label>
-        <input type="text" id="job_type" name="job_type" placeholder="Job Type" required><br><br>
-        <label for="salary">Salary:</label>
-        <input type="text" id="salary" name="salary" placeholder="Salary" required><br><br>
-        <label for="skills_required">Skills Required:</label>
-        <input type="text" id="skills_required" name="skills_required" placeholder="Skills Required" required><br><br>
-        <label for="education_required">Education Required:</label>
-        <input type="text" id="education_required" name="education_required" placeholder="Education Required" required><br><br>
-        <label for="experience_required">Experience Required:</label>
-        <input type="text" id="experience_required" name="experience_required" placeholder="Experience Required" required><br><br>
-        <input style="background-color: rgb(26, 143, 201);" type="submit" value="Add Job">
-    </form>
-</div>
+    <div class="container">
+        <h1>Add Job</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <label for="company_name">Company Name:</label>
+            <input type="text" id="company_name" name="company_name" placeholder="Company Name" required><br><br>
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location" placeholder="Location" required><br><br>
+            <label for="job_title">Job Title:</label>
+            <input type="text" id="job_title" name="job_title" placeholder="Title" required><br><br>
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" placeholder="Description" required></textarea><br><br>
+            <label for="job_type">Job Type:</label>
+            <input type="text" id="job_type" name="job_type" placeholder="Job Type" required><br><br>
+            <label for="salary">Salary:</label>
+            <input type="text" id="salary" name="salary" placeholder="Salary" required><br><br>
+            <label for="skills_required">Skills Required:</label>
+            <input type="text" id="skills_required" name="skills_required" placeholder="Skills Required" required><br><br>
+            <label for="education_required">Education Required:</label>
+            <input type="text" id="education_required" name="education_required" placeholder="Education Required" required><br><br>
+            <label for="experience_required">Experience Required:</label>
+            <input type="text" id="experience_required" name="experience_required" placeholder="Experience Required" required><br><br>
+            <input type="submit" value="Add Job">
+        </form>
+    </div>
 </body>
 </html>
+
 
 
 {% endblock %}

@@ -1,39 +1,46 @@
 {% extends 'base.html' %}
 {% block content %}
-
-<div class="container"><br>
+<div class="container">
+  <br>
   <h1 style="color: aliceblue;">Add Your Profile</h1>
-<form method="POST" enctype="multipart/form-data">
+  <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    
-    <div><br>
+
+    <div>
+      <br>
       <label for="company_name">Company Name:</label>
-      <input type="text" id="company_name" name="company_name" >
-    </div><br>
-    
+      <input type="text" id="company_name" name="company_name" style="border-radius: 5px; padding: 10px;">
+    </div>
+    <br>
+
     <div>
       <label for="location">Location:</label>
-      <input type="text" id="location" name="location">
-    </div><br>
-    
+      <input type="text" id="location" name="location" style="border-radius: 5px; padding: 10px;">
+    </div>
+    <br>
+
     <div>
       <label for="contact_email">Contact Email:</label>
-      <input type="email" id="contact_email" name="contact_email">
-    </div><br>
-    
+      <input type="email" id="contact_email" name="contact_email" style="border-radius: 5px; padding: 10px;">
+    </div>
+    <br>
+
     <div>
       <label for="contact_phone">Contact Phone:</label>
-      <input type="text" id="contact_phone" name="contact_phone">
-    </div><br>
-    
+      <input type="text" id="contact_phone" name="contact_phone" style="border-radius: 5px; padding: 10px;">
+    </div>
+    <br>
+
     <div>
       <label for="logo">Logo:</label>
       <input type="file" id="logo" name="logo">
-    </div><br>
-    
-    <button style="background-color: rgb(23, 130, 201);" type="submit">Save</button>
+    </div>
+    <br>
+
+    <button style="background-color: rgb(23, 130, 201); color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Save</button>
   </form>
 </div>
+
   
 
 {% endblock %}

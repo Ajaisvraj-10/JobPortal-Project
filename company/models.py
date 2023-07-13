@@ -1,5 +1,6 @@
 from django.db import models
 from user.models import *
+from account.models import *
 # Create your models here.
 
 class CompanyProfile(models.Model):
@@ -15,7 +16,7 @@ class CompanyProfile(models.Model):
       
     
 class AddJob(models.Model):
-    user = models.OneToOneField(CustomUser,on_delete=models.CASCADE,null=True)
+    user = models.ForeignKey(Company,on_delete=models.CASCADE,null=True)
     company_name = models.CharField(max_length=100,null=True)
     location = models.CharField(max_length=200,null=True)
     job_tittle = models.CharField(max_length=100,null=True)

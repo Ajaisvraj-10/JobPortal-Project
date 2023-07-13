@@ -1,23 +1,43 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container"><br>
-<h1 style="color: aliceblue;">Company Registeration</h1><br>
-<form method="post">
-    {% csrf_token %}
+<style>
+    .input-short {
+    width: 200px; /* Adjust the width as per your preference */
+}
+</style>
+<div class="container">
+    <h1 class="text-white">Company Registration</h1>
+    <form method="post">
+        {% csrf_token %}
 
-    <label>Username :</label> <input style="border-radius: 30%;" type="text" name="username"> <br><br>
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" class="form-control input-short" id="username" name="username" placeholder="Enter username">
+        </div><br>
 
-    <label>Company Name :</label> <input style="border-radius: 30%;" type="text" name="company_name"> <br><br>
+        <div class="form-group">
+            <label for="company_name">Company Name:</label>
+            <input type="text" class="form-control input-short" id="company_name" name="company_name" placeholder="Enter company name">
+        </div><br>
 
-    <label>Email :</label> <input style="border-radius: 30%;" type="email" name="email"> <br><br>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control input-short" id="email" name="email" placeholder="Enter email">
+        </div><br>
 
-    <label>Password :</label> <input style="border-radius: 30%;" type="password" name="password"> <br><br>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" class="form-control input-short" id="password" name="password" placeholder="Enter password">
+        </div><br>
 
-    <label>Confirm Password :</label> <input style="border-radius: 30%;" type="password" name="confirm_password"> <br><br>
+        <div class="form-group">
+            <label for="confirm_password">Confirm Password:</label>
+            <input type="password" class="form-control input-short" id="confirm_password" name="confirm_password" placeholder="Confirm password">
+        </div><br>
 
-    <label>Register :</label> <input style="background-color: aqua;" type="submit">
-
-</form>
+        <button type="submit" class="btn btn-primary">Register</button>
+    </form>
 </div>
+
 {% endblock %}
