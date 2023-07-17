@@ -1,14 +1,14 @@
 from django.shortcuts import render ,redirect
 from django.http import HttpResponse
 from .models import *
-from user.models import JobApplication
 from django.contrib.auth import authenticate, login,logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from account .models import *
 from.decorators import company_login_required
-
+from user .models import JobApplication
 # Create your views here.
+
 @company_login_required 
 def company_index(request):
     return render(request,'company/company_index.html')
@@ -143,35 +143,6 @@ def company_jobdetails(request,id):
     return render(request,'company/company_jobdetails.html',context)
 
 
-
-# @company_login_required
-# def appliction_submision(request):
-#     if request.method == 'POST':
-#         username = request.POST.get('username')
-#         job = request.POST.get('job')
-#         resume = request.POST.get('resume')
-#         status = request.FILES.get('status')
-    
-#         AppllicationSubmition.objects.create(
-#             user = request.user,
-#             username=username,
-#             job=job,
-#             resume=resume,
-#             status=status
-#         )
-#         return redirect('application_list')
-#     return render(request,'company/application_submission.html',{'choices':AppllicationSubmition.selection_choices})
-
-
-
-# @company_login_required
-# def appliction_list(request):
-#     application = AppllicationSubmition.objects.all()
-#     context = {'application':application}
-#     return render(request,'company/application_list.html',context)
-
-
-
 @company_login_required
 def company_profile_edit(request, id):
     profile_edit = CompanyProfile.objects.get(id=id)
@@ -196,11 +167,15 @@ def company_profile_edit(request, id):
     return render(request, "company/company_profile_edit.html", context)
 
 
-@company_login_required
+
 def registered_companies(request):
+    
     registered_companies = CompanyProfile.objects.all()
     context = {"registered_companies":registered_companies}
+    
     return render(request,'company/registered_companies.html',context)
+
+
 
 @company_login_required
 def job_applicants(request, id):

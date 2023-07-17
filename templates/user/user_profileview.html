@@ -5,13 +5,16 @@
     .container{
         text-align: center;
     }
+    body{
+    background-image: url(/static/img/backgrnd\ img2.jpg);
+  }
 </style>
 <div class="container">
     <h1 style="color: white;">My Profile</h1> <br><br>
 
     {% for profile in profileview %}
         <tr>
-            <td><h2><a href="{% url 'user_profile_details' id=profile.id %}"> ⨠ {{ profile.name }}</a></h2></td>
+            <td><h2><a style="color: black;" href="{% url 'user_profile_details' id=profile.id %}"> ⨠ {{ profile.name }}</a></h2></td>
         </tr>
     {% endfor %}
 </div>

@@ -2,19 +2,13 @@
 
 {% block content %}
 <div class="container">
-    
-<style>
-    .container{
-        text-align: center;
-    }
-</style>
 {% for profiles in profiles %}
 
-<h1 style="color: aliceblue; text-decoration: underline;">Your Profile</h1>
+<h1>List of Companies</h1>
 
 
 <tr>
-    <br><br>
+    <td>{{ forloop.counter }}</td>
     <td><h2><a  href="{% url 'company_details' profiles.id %}">{{profiles.company_name}}</a></h2></td>
   
 </tr>

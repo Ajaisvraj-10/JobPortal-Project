@@ -1,10 +1,10 @@
 from django.db import models
 from user.models import *
-from account.models import *
+from account.models import Company
 # Create your models here.
 
 class CompanyProfile(models.Model):
-    user = models.OneToOneField(CustomUser,on_delete=models.CASCADE)
+    user = models.OneToOneField(Company,on_delete=models.CASCADE)
     company_name = models.CharField(max_length=100)
     location = models.CharField(max_length=100)
     logo = models.ImageField(upload_to="company_logo/",null=True,blank=True)
@@ -33,20 +33,5 @@ class AddJob(models.Model):
         return self.job_tittle
     
 
-# class AppllicationSubmition(models.Model):
-    
-#     selection_choices = (
-#         ('pending','Pending'),
-#         ('selected','Selected'),
-#         ('not selected','Not Selected')
-#     )
-#     user = models.ForeignKey(UserProfile,on_delete=models.CASCADE)
-#     username = models.CharField(max_length=100,null= True)
-#     job = models.ForeignKey(AddJob,on_delete=models.CASCADE)
-#     resume = models.FileField(upload_to='resume/',null=True)
-#     status = models.CharField(max_length=100,default='pending')
-    
-#     def __str__(self):
-#         return f"{self.username} - {self.job.title}"    
-    
+
     

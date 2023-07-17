@@ -5,7 +5,6 @@ from django.contrib.auth import authenticate, login,logout
 from account .models import *
 from .models import *
 from.decorators import user_login_required
-from company.models import AddJob
 from django.http import HttpResponse
 
 
@@ -66,6 +65,13 @@ def user_registration(request):
     
 @user_login_required
 def adduser_profile(request):
+    user = request.user
+    profile = UserProfile.objects.filter(user=user).first()
+    
+    if profile:
+        # Profile already exists, redirect to a page indicating that the profile has already been created
+        return redirect('user_profileview')
+    
     if request.method == 'POST':
         name = request.POST.get('name')
         location = request.POST.get('location')
@@ -73,8 +79,9 @@ def adduser_profile(request):
         cont_phone = request.POST.get('cont_phone')
         profile_image = request.FILES.get('profile_image')
         gender = request.POST.get('gender')
-        UserProfile.objects.create(
-            user=request.user,
+        
+        profile = UserProfile(
+            user=user,
             name=name,
             location=location,
             cont_email=cont_email,
@@ -82,9 +89,12 @@ def adduser_profile(request):
             profile_image=profile_image,
             gender=gender
         )
+        profile.save()
+        
         return redirect('user_profileview')
-    return render(request,'user/adduser_profile.html',{'choices':UserProfile.GENDER_CHOICES})
-
+    
+    choices = UserProfile.GENDER_CHOICES
+    return render(request, 'user/adduser_profile.html', {'choices': choices})
 
 @user_login_required
 def user_profileview(request):
@@ -168,8 +178,6 @@ def add_experience(request):
     return render(request,'user/add_experience.html')
 
 
-
-@user_login_required
 def add_projects(request):
     if request.method == 'POST':
         title = request.POST.get('title')
@@ -183,6 +191,7 @@ def add_projects(request):
         user_profile_id = user.userprofile.id
         return redirect('user_profile_details',id=user_profile_id)
     return render(request,'user/add_project.html')
+
 
 
 

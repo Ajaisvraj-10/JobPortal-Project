@@ -1,6 +1,6 @@
 from django.db import models
-from account.models import CustomUser,User,Company
-from company.models import AddJob
+from account.models import *
+from company .models import AddJob
 # Create your models here.
 
 class UserProfile(models.Model):
@@ -56,6 +56,7 @@ class AddProject(models.Model):
     def __str__(self):
         return self.title
     
+
 
 
 class JobApplication(models.Model):

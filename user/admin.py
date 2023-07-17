@@ -9,5 +9,8 @@ admin.site.register(AddEducation)
 admin.site.register(AddSkills)
 admin.site.register(AddExperience)
 admin.site.register(AddProject)
+admin.site.register(JobApplication)
+admin.site.register(JobListing)
+
 
 

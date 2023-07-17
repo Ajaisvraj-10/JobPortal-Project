@@ -3,11 +3,14 @@
 {% block content %}
 <style>
   .container{
-    text-align: center;
+    text-align: start;
+  }
+  body{
+    background-image: url(/static/img/);
   }
 </style>
-<div class="container">
-<h1 style="color: aliceblue; text-decoration: double;">My Profile</h1><br><br>
+<div class="container"><br><br>
+<h1 style="color: rgb(255, 255, 255); text-decoration: double;">My Profile</h1><br><br>
 
 {% if profileview.profile_image %}
         <img style="width: 190 ;height: 160;" src="{{ profileview.profile_image.url }}" alt="Profile Image">
@@ -16,32 +19,32 @@
     {% endif %}
 <br><br>
 {% if profileview %}
-    <h2 style="color: rgb(48, 111, 167);">Name: {{ profileview.name }}</h2>
-    <p>Location: {{ profileview.location }}</p>
-    <p>Contact Email: {{ profileview.cont_email }}</p>
-    <p>Contact Phone: {{ profileview.cont_phone }}</p>
-    <p>Gender: {{ profileview.gender }}</p>
+    <h2 style="color: rgb(0, 0, 0);">Name: {{ profileview.name }}</h2>
+    <p style="color: aliceblue;"> Location: {{ profileview.location }}</p>
+    <p style="color: aliceblue;">Contact Email: {{ profileview.cont_email }}</p>
+    <p style="color: aliceblue;">Contact Phone: {{ profileview.cont_phone }}</p>
+    <p style="color: aliceblue;">Gender: {{ profileview.gender }}</p>
 
 {% else %}
     <p>User profile not found.</p>
 
 {% endif %}
 </div>
+
 <div class="container">
     <h1 style="color: aliceblue;">Education</h1>
     {% for add_education in education_list %}
       <div>
-        <h3 style="color: rgb(48, 111, 167);">Name of College: {{ add_education.name_of_college }}</h3>
-        <p>Passout Year: {{ add_education.passout_year }}</p>
-        <p>Subject: {{ add_education.subject }}</p>
+        <h3 style="color: rgb(0, 0, 0);">Name of College: {{ add_education.name_of_college }}</h3>
+        <p style="color: aliceblue;">Passout Year: {{ add_education.passout_year }}</p>
+        <p style="color: aliceblue;">Subject: {{ add_education.subject }}</p>
       </div>
     {% empty %}
-      <p>No educations added yet.</p>
+      <p style="color: aliceblue;">No educations added yet.</p>
     {% endfor %}
-    <a href="{% url 'add_education' %}">⨠ Add Education</a><br><br>
+    <a style="color: rgb(0, 246, 209);" href="{% url 'add_education' %}">+ Add Education</a><br><br>
   </div>
   
-
 
 
 
@@ -50,13 +53,13 @@
   <h1 style="color: aliceblue;">Skills</h1>
     {% for add_skill in skill_list %}
       <div>
-        <h3 style="color: rgb(48, 111, 167);"> Skill: {{ add_skill.skill_name }}</h3>
-        <p>Description: {{ add_skill.description }}</p>
+        <h3 style="color: rgb(0, 0, 0);"> Skill: {{ add_skill.skill_name }}</h3>
+        <p style="color: aliceblue;">Description: {{ add_skill.description }}</p>
       </div>
     {% empty %}
-      <p>No skills added yet.</p>
+      <p style="color: aliceblue;">No skills added yet.</p>
     {% endfor %}
-    <a href="{% url 'add_skill' %}">⨠ Add Skill</a>
+    <a style="color: rgb(0, 246, 209)" href="{% url 'add_skill' %}">+ Add Skill</a>
   </div>
   
 
@@ -68,15 +71,15 @@
   <h1 style="color: aliceblue;">Experience</h1>
     {% for add_experience in experience_list %}
       <div>
-        <h3 style="color: rgb(48, 111, 167);">{{ add_experience.company_name }}</h3>
-        <p>Position: {{ add_experience.position }}</p>
-        <p>Start Date: {{ add_experience.start_date }}</p>
-        <p>End Date: {{ add_experience.end_date }}</p>
+        <h3 style="color: rgb(0, 0, 0);">{{ add_experience.company_name }}</h3>
+        <p style="color: aliceblue;">Position: {{ add_experience.position }}</p>
+        <p style="color: aliceblue;">Start Date: {{ add_experience.start_date }}</p>
+        <p style="color: aliceblue;">End Date: {{ add_experience.end_date }}</p>
       </div>
     {% empty %}
-      <p>No Experiences added yet.</p>
+      <p style="color: aliceblue;">No Experiences added yet.</p>
     {% endfor %}
-    <a href="{% url 'add_experience' %}">⨠ Add Experience</a>
+    <a style="color:  rgb(0, 246, 209);" href="{% url 'add_experience' %}">+ Add Experience</a>
   </div>
   
 
@@ -88,13 +91,13 @@
   <h1 style="color: aliceblue;">Projects</h1>
     {% for add_projects in project_list %}
       <div>
-        <h3 style="color: rgb(48, 111, 167);">Title: {{ add_projects.title }}</h3>
-        <p>Description: {{ add_projects.description }}</p>
+        <h3 style="color: rgb(0, 0, 0);">Title: {{ add_projects.title }}</h3>
+        <p style="color: aliceblue;">Description: {{ add_projects.description }}</p>
       </div>
     {% empty %}
-      <p>No Projects added yet.</p>
+      <p style="color: aliceblue;">No Projects added yet.</p>
     {% endfor %}
-    <a href="{% url 'add_projects' %}">⨠ Add Projects</a>
+    <a style="color: rgb(0, 246, 209);" href="{% url 'add_projects' %}">+ Add Projects</a>
 
   </div>
   
