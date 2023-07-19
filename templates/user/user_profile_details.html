@@ -5,9 +5,6 @@
   .container{
     text-align: start;
   }
-  body{
-    background-image: url(/static/img/);
-  }
 </style>
 <div class="container"><br><br>
 <h1 style="color: rgb(255, 255, 255); text-decoration: double;">My Profile</h1><br><br>
@@ -19,7 +16,7 @@
     {% endif %}
 <br><br>
 {% if profileview %}
-    <h2 style="color: rgb(0, 0, 0);">Name: {{ profileview.name }}</h2>
+    <h2 style="color: rgb(255, 255, 255);">Name: {{ profileview.name }}</h2>
     <p style="color: aliceblue;"> Location: {{ profileview.location }}</p>
     <p style="color: aliceblue;">Contact Email: {{ profileview.cont_email }}</p>
     <p style="color: aliceblue;">Contact Phone: {{ profileview.cont_phone }}</p>
@@ -35,7 +32,7 @@
     <h1 style="color: aliceblue;">Education</h1>
     {% for add_education in education_list %}
       <div>
-        <h3 style="color: rgb(0, 0, 0);">Name of College: {{ add_education.name_of_college }}</h3>
+        <h3 style="color: rgb(255, 255, 255);">Name of College: {{ add_education.name_of_college }}</h3>
         <p style="color: aliceblue;">Passout Year: {{ add_education.passout_year }}</p>
         <p style="color: aliceblue;">Subject: {{ add_education.subject }}</p>
       </div>
@@ -53,7 +50,7 @@
   <h1 style="color: aliceblue;">Skills</h1>
     {% for add_skill in skill_list %}
       <div>
-        <h3 style="color: rgb(0, 0, 0);"> Skill: {{ add_skill.skill_name }}</h3>
+        <h3 style="color: rgb(255, 255, 255);"> Skill: {{ add_skill.skill_name }}</h3>
         <p style="color: aliceblue;">Description: {{ add_skill.description }}</p>
       </div>
     {% empty %}
@@ -71,7 +68,7 @@
   <h1 style="color: aliceblue;">Experience</h1>
     {% for add_experience in experience_list %}
       <div>
-        <h3 style="color: rgb(0, 0, 0);">{{ add_experience.company_name }}</h3>
+        <h3 style="color: rgb(255, 255, 255);">{{ add_experience.company_name }}</h3>
         <p style="color: aliceblue;">Position: {{ add_experience.position }}</p>
         <p style="color: aliceblue;">Start Date: {{ add_experience.start_date }}</p>
         <p style="color: aliceblue;">End Date: {{ add_experience.end_date }}</p>
@@ -91,7 +88,7 @@
   <h1 style="color: aliceblue;">Projects</h1>
     {% for add_projects in project_list %}
       <div>
-        <h3 style="color: rgb(0, 0, 0);">Title: {{ add_projects.title }}</h3>
+        <h3 style="color: rgb(255, 255, 255);">Title: {{ add_projects.title }}</h3>
         <p style="color: aliceblue;">Description: {{ add_projects.description }}</p>
       </div>
     {% empty %}
